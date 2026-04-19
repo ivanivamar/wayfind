@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@vis.gl/react-google-maps": "^1.8.3",
     "clsx": "^2.1.1",
     "firebase": "^10.14.1",
     "next": "^14.2.15",
