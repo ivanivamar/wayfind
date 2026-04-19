@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    @apply bg-bg text-fg-1 font-sans antialiased;
+  }
+  input::placeholder {
+    color: #a8947e;
+  }
+}
+
+@layer utilities {
+  /*
+   * Clean grid background for auth pages.
+   * Thin, equally spaced vertical + horizontal lines, no shapes.
+   * 48px cell matches the spacing rhythm from the original prototype.
+   */
+  .bg-grid {
+    background-color: #faf8f5;
+    background-image:
+      linear-gradient(to right, #e8ddd0 1px, transparent 1px),
+      linear-gradient(to bottom, #e8ddd0 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+}
