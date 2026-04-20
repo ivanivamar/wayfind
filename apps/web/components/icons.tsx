@@ -79,3 +79,22 @@ export function MenuIcon(props: IconProps) {
     </Svg>
   );
 }
+
+export function UserIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+      <path d="M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+    </Svg>
+  );
+}
+
+export function LayersIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M12 2 2 7l10 5 10-5-10-5" />
+      <path d="M2 17l10 5 10-5" />
+      <path d="M2 12l10 5 10-5" />
+    </Svg>
+  );
+}

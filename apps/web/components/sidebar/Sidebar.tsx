@@ -3,7 +3,8 @@
 import {useEffect, useRef, useState} from "react";
 import {Wordmark} from "@/components/ui/Wordmark";
 import {IconButton} from "@/components/ui/IconButton";
-import {ChevronLeftIcon, ClockIcon, PinIcon} from "@/components/icons";
+import {ChevronLeftIcon, ClockIcon, LayersIcon, PinIcon, UserIcon} from "@/components/icons";
+import {useAuth} from "@/contexts/AuthContext";
 import {SearchField} from "./SearchField";
 import {SuggestionList} from "./SuggestionList";
 import {
@@ -41,6 +42,7 @@ export function Sidebar({
                             open,
                             onToggle,
                         }: SidebarProps) {
+    const {user} = useAuth();
     const [query, setQuery] = useState("");
     const [focused, setFocused] = useState(false);
     const [selecting, setSelecting] = useState(false);
@@ -173,6 +175,33 @@ export function Sidebar({
                         trailing={n.dist}
                     />
                 ))}
+            </div>
+
+            {/* Footer */}
+            <div className="flex flex-shrink-0 items-center gap-2 border-t border-border px-3 py-2.5">
+                <button
+                    type="button"
+                    aria-label="Account"
+                    className="flex h-[30px] w-[30px] flex-shrink-0 items-center justify-center rounded-full
+                               border border-[#D9CABA] bg-[#E8DDD0] text-fg-2 transition-colors duration-150
+                               hover:border-border-focus hover:bg-primary/10 hover:text-primary"
+                >
+                    <UserIcon size={14}/>
+                </button>
+
+                <span className="flex-1 truncate text-[12px] font-medium text-fg-1">
+                    {user?.displayName ?? user?.email ?? "Account"}
+                </span>
+
+                <button
+                    type="button"
+                    aria-label="Map layers"
+                    className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md
+                               border border-[#E8DDD0] bg-surface text-fg-2 transition-colors duration-150
+                               hover:bg-[#E8DDD0]"
+                >
+                    <LayersIcon size={13}/>
+                </button>
             </div>
         </aside>
     );
