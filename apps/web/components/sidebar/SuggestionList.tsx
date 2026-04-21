@@ -27,7 +27,8 @@ export function SuggestionList(
     return (
         <div
             className="absolute left-0 right-0 top-[calc(100%+4px)] z-20 overflow-hidden rounded-lg
-                 border border-[#E8DDD0] bg-white shadow-[0_8px_24px_rgba(28,21,16,0.14)]
+                 border border-surface-hover bg-surface-elevated
+                 shadow-[0_8px_24px_rgba(28,21,16,0.14)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.4)]
                  animate-fade-up"
         >
             {loading && suggestions.length === 0 && (
@@ -47,8 +48,8 @@ export function SuggestionList(
                         onSelect(s);
                     }}
                     className={`flex w-full items-center gap-2.5 px-3 py-2.5 text-left transition-colors
-                      duration-100 hover:bg-surface
-                      ${i > 0 ? "border-t border-[#F2EBE0]" : ""}`}
+                      duration-100 hover:bg-item-hover
+                      ${i > 0 ? "border-t border-divider" : ""}`}
                 >
                     <div
                         className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md

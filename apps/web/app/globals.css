@@ -2,30 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * All color tokens use space-separated R G B so Tailwind opacity modifiers
+ * (e.g. bg-bg/95, primary/10) work correctly via rgb(var(--x) / alpha).
+ */
+:root {
+  --color-bg:               250 248 245;   /* #FAF8F5 */
+  --color-surface:          242 235 224;   /* #F2EBE0 */
+  --color-surface-elevated: 255 255 255;   /* #ffffff */
+  --color-surface-hover:    232 221 208;   /* #E8DDD0 — subtle borders */
+  --color-item-hover:       242 235 224;   /* #F2EBE0 — list row hover bg */
+  --color-divider:          240 234 224;   /* #F0EAE0 */
+  --color-border:           224 212 196;   /* #E0D4C4 */
+  --color-fg-1:             28 21 16;      /* #1C1510 */
+  --color-fg-2:             107 87 68;     /* #6B5744 */
+  --color-fg-3:             168 148 126;   /* #A8947E */
+  --color-primary:          196 97 26;     /* #C4611A */
+  --color-primary-hover:    168 80 22;     /* #A85016 */
+  --color-primary-disabled: 196 172 148;   /* #C4AC94 */
+  --color-danger:           196 52 26;     /* #C4341A */
+
+  --shadow-card:     0 12px 40px rgba(28,21,16,0.14), 0 4px 8px rgba(28,21,16,0.06);
+  --shadow-dropdown: 0 -8px 32px rgba(28,21,16,0.14);
+}
+
+.dark {
+  --color-bg:               26 20 16;      /* #1A1410 */
+  --color-surface:          35 29 24;      /* #231D18 */
+  --color-surface-elevated: 45 37 32;      /* #2D2520 */
+  --color-surface-hover:    61 48 40;      /* #3D3028 — subtle borders */
+  --color-item-hover:       39 33 29;      /* #27211D — list row hover bg */
+  --color-divider:          61 48 40;      /* #3D3028 */
+  --color-border:           61 48 40;      /* #3D3028 */
+  --color-fg-1:             242 235 224;   /* #F2EBE0 */
+  --color-fg-2:             168 146 128;   /* #A89280 */
+  --color-fg-3:             145 112 96;    /* #917060 */
+  --color-primary:          240 144 96;    /* #F09060 */
+  --color-primary-hover:    224 120 64;    /* #E07840 */
+  --color-primary-disabled: 107 74 50;     /* #6B4A32 */
+  --color-danger:           200 112 112;   /* #C87070 */
+
+  --shadow-card:     0 20px 60px rgba(0,0,0,0.55), 0 4px 12px rgba(0,0,0,0.3);
+  --shadow-dropdown: 0 -8px 32px rgba(0,0,0,0.4);
+}
+
 @layer base {
-  html,
-  body {
-    height: 100%;
-  }
-  body {
-    @apply bg-bg text-fg-1 font-sans antialiased;
-  }
-  input::placeholder {
-    color: #a8947e;
-  }
+  html, body { height: 100%; }
+  body { @apply bg-bg text-fg-1 font-sans antialiased; }
+  input::placeholder { color: rgb(var(--color-fg-3)); }
 }
 
 @layer utilities {
-  /*
-   * Clean grid background for auth pages.
-   * Thin, equally spaced vertical + horizontal lines, no shapes.
-   * 48px cell matches the spacing rhythm from the original prototype.
-   */
   .bg-grid {
-    background-color: #faf8f5;
+    background-color: rgb(var(--color-bg));
     background-image:
-      linear-gradient(to right, #e8ddd0 1px, transparent 1px),
-      linear-gradient(to bottom, #e8ddd0 1px, transparent 1px);
+      linear-gradient(to right, rgb(var(--color-surface-hover)) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--color-surface-hover)) 1px, transparent 1px);
     background-size: 48px 48px;
   }
 }
