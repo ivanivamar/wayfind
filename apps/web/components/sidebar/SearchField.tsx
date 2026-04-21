@@ -39,8 +39,8 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
           transition-[background-color,border-color,box-shadow] duration-150
           ${
                     isFocused
-                        ? "border-primary bg-white shadow-ring-primary"
-                        : "border-[#E8DDD0] bg-surface"
+                        ? "border-primary bg-surface-elevated shadow-ring-primary"
+                        : "border-surface-hover bg-surface"
                 }`}
             >
                 <SearchIcon
