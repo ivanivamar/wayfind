@@ -2,6 +2,7 @@
 
 import {useCallback, useEffect, useState} from "react";
 import {InfoWindow, Map, useMap, useMapsLibrary} from "@vis.gl/react-google-maps";
+import type {MapMouseEvent} from "@vis.gl/react-google-maps";
 import type {LatLng} from "@/lib/hooks/useGeolocation";
 import type {RouteResult} from "@/lib/hooks/useRoutes";
 import type {SavedPlace} from "@/lib/hooks/usePlaces";
@@ -34,13 +35,13 @@ export function MapView({
     const placesLib = useMapsLibrary("places");
 
     const handleMapClick = useCallback(
-        async (e: google.maps.MapMouseEvent & {placeId?: string; stop?: () => void}) => {
-            const placeId = e.placeId;
+        async (e: MapMouseEvent) => {
+            const placeId = e.detail.placeId;
             if (!placeId || !placesLib) {
                 setPopup(null);
                 return;
             }
-            e.stop?.();
+            e.stop();
             try {
                 const place = new placesLib.Place({id: placeId});
                 await place.fetchFields({fields: ["displayName", "formattedAddress", "location"]});
